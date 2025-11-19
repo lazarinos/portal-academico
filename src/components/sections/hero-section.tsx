@@ -2,16 +2,30 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { heroStats, announcements } from "@/data/site-content";
 import Link from "next/link";
+import { HeroContent } from "@/lib/hero";
 
-export function HeroSection() {
+type Props = {
+  content: HeroContent;
+};
+
+export function HeroSection({ content }: Props) {
   const mainAnnouncement = announcements[0];
 
   return (
     <section
       id="inicio"
-      className="relative overflow-hidden rounded-3xl border bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 px-8 py-16 text-white shadow-2xl"
+      className="relative overflow-hidden rounded-3xl border bg-neutral-900 px-8 py-16 text-white shadow-2xl"
     >
-      <div className="grid gap-10 lg:grid-cols-[3fr_2fr] lg:items-center">
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `linear-gradient(to bottom right, rgba(0,0,0,0.55), rgba(0,0,0,0.85)), url(${content.imageUrl})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: 0.9,
+        }}
+      />
+      <div className="relative grid gap-10 lg:grid-cols-[3fr_2fr] lg:items-center">
         <div className="space-y-6">
           <Badge
             variant="secondary"
@@ -20,17 +34,12 @@ export function HeroSection() {
             Convocatoria institucional 2024-II
           </Badge>
           <h1 className="text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
-            Portal académico del Instituto Tecnológico Productivo de la Región
+            {content.title}
           </h1>
-          <p className="text-lg text-white/80">
-            Transparencia, innovación y servicios académicos en un solo lugar.
-            Consulta normativa vigente, cursos modulares o anuales, convenios,
-            inscripciones virtuales y acceso directo a certificados y evidencias
-            académicas.
-          </p>
+          <p className="text-lg text-white/80">{content.subtitle}</p>
           <div className="flex flex-wrap gap-4">
             <Button asChild size="lg" className="bg-white text-neutral-900">
-              <Link href="#inscripciones">Quiero inscribirme</Link>
+              <Link href={content.ctaTarget}>{content.ctaLabel}</Link>
             </Button>
             <Button
               asChild

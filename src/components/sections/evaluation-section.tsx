@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { evaluationBlueprints } from "@/data/site-content";
+import { Evaluation } from "@/lib/evaluations";
 
 const practiceQuestion = {
   statement:
@@ -21,6 +21,20 @@ const practiceQuestion = {
 export function EvaluationSection() {
   const [selected, setSelected] = useState<string>();
   const [result, setResult] = useState<null | boolean>(null);
+  const [evaluations, setEvaluations] = useState<Evaluation[]>([]);
+
+  useEffect(() => {
+    async function load() {
+      try {
+        const res = await fetch("/api/evaluations");
+        const data = await res.json();
+        setEvaluations(data.data ?? []);
+      } catch (error) {
+        console.error("No se pudo cargar evaluaciones", error);
+      }
+    }
+    load();
+  }, []);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -33,26 +47,28 @@ export function EvaluationSection() {
       id="evaluaciones"
       className="grid gap-6 rounded-3xl border bg-neutral-900 p-8 text-white lg:grid-cols-[2fr_3fr]"
     >
-      <div>
-        <p className="text-sm uppercase tracking-wide text-white/60">
-          Evaluaciones virtuales
-        </p>
-        <h2 className="text-3xl font-semibold">Rinde simulacros cuando quieras</h2>
-        <p className="text-white/70">
-          Bancos de preguntas alineados al currículo. Puedes practicar por competencias
-          y recibir retroalimentación inmediata antes de rendir el examen oficial.
-        </p>
-        <div className="mt-6 space-y-4">
-          {evaluationBlueprints.map((evaluation) => (
+      <div className="space-y-4">
+        <div>
+          <p className="text-sm uppercase tracking-wide text-white/60">
+            Evaluaciones
+          </p>
+          <h2 className="text-3xl font-semibold">Simulacros conectados a la BD</h2>
+          <p className="text-white/70">
+            Datos servidos desde Postgres (Docker). Cada intento está alineado a competencias
+            y tiempos reales del examen oficial.
+          </p>
+        </div>
+        <div className="grid gap-3">
+          {evaluations.map((evaluation) => (
             <Card
-              key={evaluation.title}
+              key={evaluation.id}
               className="border-white/15 bg-white/5 text-white"
             >
               <CardContent className="flex flex-col gap-3 p-5 text-sm">
                 <div className="flex items-center justify-between">
                   <p className="text-base font-semibold">{evaluation.title}</p>
                   <Badge className="bg-emerald-400 text-emerald-950">
-                    {evaluation.time}
+                    {evaluation.duration}
                   </Badge>
                 </div>
                 <p className="text-white/70">
