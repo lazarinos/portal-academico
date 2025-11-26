@@ -1,6 +1,8 @@
+import "server-only";
 import { Pool } from "pg";
+import { env } from "@/env";
 
-const connectionString = process.env.DATABASE_URL;
+const connectionString = env.DATABASE_URL;
 
 let pool: Pool | null = null;
 

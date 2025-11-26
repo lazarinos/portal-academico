@@ -67,7 +67,7 @@ export const documentGroups: DocumentGroup[] = [
     ],
   },
   {
-    title: "Dispositivos externos",
+    title: "Normativa externa",
     scope: "Externo",
     description:
       "Resoluciones del MINEDU, convenios y normas de acreditación que respaldan nuestra oferta académica.",
@@ -100,58 +100,95 @@ export type CourseProgram = {
   start: string;
   certification: string;
   seats: number;
+  summary: string;
+  roles: string[];
 };
 
 export const coursePrograms: CourseProgram[] = [
   {
-    name: "Gestión de la Producción Lechera",
+    name: "Gestion de la Produccion Lechera",
     modality: "Modular",
     duration: "12 semanas",
     cost: "S/ 420",
-    schedule: "Noches · Mar/Jue",
+    schedule: "Noches - Mar/Jue",
     start: "02 junio",
-    certification: "Certificado por módulo",
+    certification: "Certificado por modulo",
     seats: 30,
+    summary:
+      "Formacion en manejo de establos, control de calidad de leche y mejora genetica basica.",
+    roles: [
+      "Tecnico de produccion en plantas lacteas",
+      "Supervisor de establos y centros de acopio",
+      "Asistente de control de calidad y cadena fria",
+    ],
   },
   {
     name: "Soporte de Redes y Ciberseguridad",
     modality: "Anual",
     duration: "11 meses",
     cost: "S/ 980",
-    schedule: "Sábados intensivos",
+    schedule: "Sabados intensivos",
     start: "13 julio",
-    certification: "Título Profesional Técnico",
+    certification: "Titulo Profesional Tecnico",
     seats: 25,
+    summary:
+      "Laboratorios orientados a diagnostico de redes, configuracion de firewalls y respuesta a incidentes.",
+    roles: [
+      "Mesa de ayuda y soporte de redes",
+      "Analista junior de seguridad",
+      "Implementador de cableado estructurado",
+    ],
   },
   {
     name: "Emergencias y Cuidados Prehospitalarios",
     modality: "Modular",
     duration: "16 semanas",
     cost: "S/ 580",
-    schedule: "Viernes/Sábado",
+    schedule: "Viernes/Sabado",
     start: "20 mayo",
     certification: "Certificado homologado",
     seats: 28,
+    summary:
+      "Simulaciones de triage, soporte basico y traslado seguro en emergencias comunitarias.",
+    roles: [
+      "Tecnico en cuidados prehospitalarios",
+      "Brigadista para empresas y minas",
+      "Asistente en centros de simulacion",
+    ],
   },
   {
-    name: "Administración Pública y Contrataciones",
+    name: "Administracion Publica y Contrataciones",
     modality: "Anual",
     duration: "12 meses",
     cost: "S/ 1,250",
-    schedule: "Virtual sincrónico",
+    schedule: "Virtual sincronico",
     start: "10 agosto",
-    certification: "Diploma con mención",
+    certification: "Diploma con mencion",
     seats: 35,
+    summary:
+      "Gestion publica con enfoque en contrataciones y control de procesos basados en normativa peruana.",
+    roles: [
+      "Asistente de logistica y contrataciones",
+      "Analista de proyectos municipales",
+      "Gestor de tramites y seguimiento documentario",
+    ],
   },
   {
-    name: "Diseño y Automatización Industrial",
+    name: "Diseno y Automatizacion Industrial",
     modality: "Anual",
     duration: "12 meses",
     cost: "S/ 1,380",
     schedule: "Semi presencial",
     start: "05 septiembre",
-    certification: "Título Profesional",
+    certification: "Titulo Profesional",
     seats: 24,
+    summary:
+      "Modelado de procesos, uso de PLC y mantenimiento preventivo de lineas industriales.",
+    roles: [
+      "Programador de PLC junior",
+      "Tecnico en mantenimiento industrial",
+      "Disenador de celdas automatizadas",
+    ],
   },
   {
     name: "Marketing Digital para Emprendimientos",
@@ -162,6 +199,13 @@ export const coursePrograms: CourseProgram[] = [
     start: "27 mayo",
     certification: "Badge y microcredencial",
     seats: 60,
+    summary:
+      "Planificacion de campanas, pauta en redes y analitica para emprendimientos locales.",
+    roles: [
+      "Gestor de redes sociales",
+      "Asistente de marketing digital",
+      "Freelancer en publicidad digital",
+    ],
   },
 ];
 
@@ -201,6 +245,7 @@ export type GalleryImage = {
   src: string;
   alt: string;
   caption: string;
+  description?: string;
 };
 
 export const galleryImages: GalleryImage[] = [
@@ -208,21 +253,25 @@ export const galleryImages: GalleryImage[] = [
     src: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b",
     alt: "Estudiantes colaborando",
     caption: "Laboratorio de innovación aplicada",
+    description: "Nuestros estudiantes trabajan en proyectos multidisciplinarios utilizando tecnología de punta para resolver problemas reales de la comunidad.",
   },
   {
     src: "https://images.unsplash.com/photo-1508830524289-0adcbe822b40",
     alt: "Laboratorio de ciencias",
     caption: "Prácticas en bioseguridad",
+    description: "Contamos con laboratorios certificados donde los alumnos aprenden protocolos de seguridad y manejo de muestras biológicas bajo estándares internacionales.",
   },
   {
     src: "https://images.unsplash.com/photo-1485546246426-74dc88dec4d9",
     alt: "Auditorio con público",
     caption: "Convocatoria de proyectos 2024",
+    description: "El auditorio principal es sede de eventos académicos, conferencias magistrales y la presentación anual de proyectos de innovación tecnológica.",
   },
   {
     src: "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b",
     alt: "Taller técnico",
     caption: "Curso modular de automatización",
+    description: "Los talleres de automatización están equipados con PLCs y sistemas robóticos para que los estudiantes adquieran competencias prácticas demandadas por la industria.",
   },
 ];
 

@@ -1,3 +1,4 @@
+import "server-only";
 import { getPool } from "@/lib/db";
 
 export type HeroContent = {

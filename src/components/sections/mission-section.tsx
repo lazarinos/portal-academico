@@ -4,19 +4,19 @@ import { missionVisionValues } from "@/data/site-content";
 export function MissionSection() {
   return (
     <section
-      id="mision"
+      id="valores"
       className="space-y-6 rounded-3xl border bg-white/80 p-8 shadow-sm backdrop-blur"
     >
       <div>
         <p className="text-sm font-semibold uppercase tracking-wide text-neutral-500">
-          Identidad institucional
+          Valores institucionales
         </p>
         <h2 className="text-3xl font-semibold leading-tight">
-          Misión, visión y valores
+          Valores, mision y vision
         </h2>
         <p className="mt-2 text-neutral-600">
-          Marcos estratégicos aprobados por Consejo Directivo (RD 045-2024) que
-          alinean cada servicio académico y administrativo del instituto.
+          Marcos estrategicos aprobados por Consejo Directivo (RD 045-2024) que
+          alinean cada servicio academico y administrativo del instituto.
         </p>
       </div>
       <div className="grid gap-6 md:grid-cols-3">
@@ -28,7 +28,7 @@ export function MissionSection() {
             </CardHeader>
             <CardContent className="space-y-2 text-sm text-neutral-700">
               {item.highlights.map((highlight) => (
-                <p key={highlight}>• {highlight}</p>
+                <p key={highlight}>- {highlight}</p>
               ))}
             </CardContent>
           </Card>

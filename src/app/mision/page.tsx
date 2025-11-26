@@ -1,9 +1,5 @@
-import { MissionSection } from "@/components/sections/mission-section";
+import { redirect } from "next/navigation";
 
 export default function MisionPage() {
-  return (
-    <div className="flex flex-col gap-8">
-      <MissionSection />
-    </div>
-  );
+  redirect("/valores");
 }

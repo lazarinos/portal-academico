@@ -119,4 +119,12 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  html {
+    scrollbar-gutter: stable;
+  }
+
+  section[id] {
+    scroll-margin-top: 96px;
+  }
 }

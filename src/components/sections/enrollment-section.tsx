@@ -140,8 +140,8 @@ export function EnrollmentSection() {
             </li>
           </ul>
           <p className="rounded-xl border border-emerald-400/40 bg-emerald-400/10 p-4 text-emerald-100">
-            * Disponible pago en línea (Visa, Yape) o transferencia desde banca
-            móvil.
+            * Disponible PagoEfectivo (Yape/Plin), Visa o transferencia desde banca
+            movil.
           </p>
         </CardContent>
       </Card>

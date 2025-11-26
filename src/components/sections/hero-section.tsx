@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { heroStats, announcements } from "@/data/site-content";
@@ -16,15 +17,17 @@ export function HeroSection({ content }: Props) {
       id="inicio"
       className="relative overflow-hidden rounded-3xl border bg-neutral-900 px-8 py-16 text-white shadow-2xl"
     >
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `linear-gradient(to bottom right, rgba(0,0,0,0.55), rgba(0,0,0,0.85)), url(${content.imageUrl})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          opacity: 0.9,
-        }}
-      />
+      <div className="absolute inset-0">
+        <Image
+          src={content.imageUrl}
+          alt="Hero background"
+          fill
+          className="object-cover opacity-90"
+          priority
+          unoptimized
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/55 to-black/85" />
+      </div>
       <div className="relative grid gap-10 lg:grid-cols-[3fr_2fr] lg:items-center">
         <div className="space-y-6">
           <Badge
